@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class ProductController extends Controller
 {
@@ -23,14 +24,18 @@ class ProductController extends Controller
         return view('product.index')->with("viewData", $viewData);
     }
 
-    public function show(string $id): View
+    public function show(string $id): View | RedirectResponse
     {
-        $viewData = [];
-        $product = ProductController::$products[$id - 1];
-        $viewData["title"] = $product["name"] . " - Online Store";
-        $viewData["subtitle"] =  $product["name"] . " - Product information";
-        $viewData["product"] = $product;
-        return view('product.show')->with("viewData", $viewData);
+        if (isset(ProductController::$products[$id - 1])) {
+            $viewData = [];
+            $product = ProductController::$products[$id - 1];
+            $viewData["title"] = $product["name"] . " - Online Store";
+            $viewData["subtitle"] =  $product["name"] . " - Product information";
+            $viewData["product"] = $product;
+            return view('product.show')->with("viewData", $viewData);
+        } else {
+            return redirect()->route("home.index");
+        }
     }
 
     public function create(): View
