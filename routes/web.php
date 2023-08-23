@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home.index');
 Route::get('/about', 'App\Http\Controllers\HomeController@about')->name('home.about');
@@ -21,3 +22,5 @@ Route::post('/image/save', 'App\Http\Controllers\ImageController@save')->name("i
 
 Route::get('/image-not-di', 'App\Http\Controllers\ImageNotDIController@index')->name("imagenotdi.index");
 Route::post('/image-not-di/save', 'App\Http\Controllers\ImageNotDIController@save')->name("imagenotdi.save");
+
+Auth::routes();
