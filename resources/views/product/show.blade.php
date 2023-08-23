@@ -4,9 +4,9 @@
 @section('content')
 
 @php
-    $name = $viewData["product"]["name"];
-    $description = $viewData["product"]["description"];
-    $price = $viewData["product"]["price"];
+$name = $viewData["product"]["name"];
+$description = $viewData["product"]["description"];
+$price = $viewData["product"]["price"];
 @endphp
 
 
@@ -18,13 +18,16 @@
         </div>
         <div class="col-md-8">
             <div class="card-body">
-                @if ($price < 100) 
-                    <h5 class="card-title">{{ $name }}</h5>
-                @else 
+                @if ($price < 100) <h5 class="card-title">{{ $name }}</h5>
+                    @else
                     <h5 class="card-title" style="color: red;">{{ $name }}</h5>
-                @endif
-                <p class="card-text">{{ $description }}</p>
-                <p class="card-text">$ {{ $price }}</p>
+                    @endif
+                    <p class="card-text">$ {{ $price }}</p>
+
+                    @foreach($viewData["product"]->comments as $comment)
+                    - {{ $comment->getDescription() }}<br />
+                    @endforeach
+
             </div>
         </div>
     </div>
