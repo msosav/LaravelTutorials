@@ -14,6 +14,7 @@ class HomeController extends Controller
     public function about():View
     {
 
+        
 
         $data1 = 'About us - Online Store';
         $data2 = 'About us';
