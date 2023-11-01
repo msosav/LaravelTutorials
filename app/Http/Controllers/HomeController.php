@@ -11,11 +11,8 @@ class HomeController extends Controller
         return view('home.index');
     }
 
-    public function about():View
+    public function about(): View
     {
-
-
-        
 
         $data1 = 'About us - Online Store';
         $data2 = 'About us';
@@ -28,7 +25,7 @@ class HomeController extends Controller
             ->with('author', $author);
     }
 
-    public function contact( ): View
+    public function contact(): View
     {
         $data1 = 'Contact us - Online Store';
         $data2 = 'Contact us';
