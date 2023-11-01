@@ -15,7 +15,6 @@ class HomeController extends Controller
     {
 
 
-
         $data1 = 'About us - Online Store';
         $data2 = 'About us';
         $description = 'This is an about page ...';
